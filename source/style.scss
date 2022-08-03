@@ -801,7 +801,7 @@ h6{
             flex-wrap: wrap;
             justify-content: center;
 
-            .btn{
+            .btn, .btn::after{
                 width: 100%;
             }
         }
@@ -951,7 +951,7 @@ h6{
         width: 450px;
     }
 
-     .main-top__item--bg{
+    .main-top__item--bg{
         h2{
             font-size: 44px;
             margin-top: 100px;
@@ -965,6 +965,17 @@ h6{
 
     .main-line--right{
         padding-right: 10px;
+
+        .btn{
+            width: 40%;
+
+            &-text{
+                font-size: 14px;
+            }
+        }
+        .btn::after{
+            width: 100%;
+        }
     }
 
     .main-teacher__item-text:nth-child(2) {
@@ -985,25 +996,18 @@ h6{
                 left: 45%;
             }
         }
-    
-        &__item:nth-child(8){
-            grid-column: 1 / span 2;
-        }
-    
-        &__item--title {
-            grid-column: 1 / span 2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-    
-        &__item--btn-block{
-            grid-column: 1 / span 2;
-        }
     }
 
     .main-content--border-item {
         flex-basis: 100%;
+    }
+
+    .main-partrens__item-text {
+        flex-basis: 100%;
+    }
+
+    .main-partrens__item-text-i {
+        width: 100%;
     }
 }
 
@@ -1030,9 +1034,63 @@ h6{
     .header-bg {
         width: 900%;
     }
+
+    .grid{
+        grid-template: repeat(6, 200px)/repeat(2, 180px);
+
+        &__item{
+            &-text {
+               font-size: 16px;
+            }
+
+            &-bg {
+                top: 15%;
+                left: 45%;
+            }
+        }
+    }
+
+    .form-application {
+    
+        &__item {
+            width: 380px;
+            height: 60px;
+            padding: 12px 20px;
+            font-size: 24px;
+            margin-bottom: 28px;
+            background: rgba(#7c8be0, .2);  
+            border-radius: 5px; 
+            color: #fff;     
+        }
+        &__item--company {
+            border: 1px solid #EFC247;
+            background: transparent;
+        }
+    
+        .btn-text{
+            font-size: 18px;
+        }
+    }
 }
 
 @media screen and (max-width: 400px) {
+
+    .main-line--right .btn {
+        margin-left: 20px;
+        width: 70%;
+    }
+
+    .main-teacher__item-text:nth-child(2) {
+        width: 100%;
+        margin: 10px auto 0 auto;
+        text-align: center;
+    }
+
+    .main-teacher__item{
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+    }
+
     .container {
         width: 290px;
     }
@@ -1055,9 +1113,101 @@ h6{
         margin-right: 0;
     }
 
+    .form-application {
+    
+        &__item {
+            width: 280px;
+            height: 60px;
+            padding: 12px 20px;
+            font-size: 24px;
+            margin-bottom: 28px;
+            background: rgba(#7c8be0, .2);  
+            border-radius: 5px; 
+            color: #fff;     
+        }
+        &__item--company {
+            border: 1px solid #EFC247;
+            background: transparent;
+        }
+    
+        .btn-text{
+            font-size: 18px;
+        }
+    }
+
+    .footer{
+
+        &-content{
+            flex-wrap: wrap;
+            justify-content: center;
+
+            .btn{
+                width: 100%;
+            }
+        }
+
+        &-item:first-child, &-item:last-child{
+            display: flex;
+            flex-basis: 100%;
+            margin-left: 0;
+        }
+    
+        &-item:first-child{
+            margin-bottom: 40px;
+        }
+    
+        &-item:last-child{
+            margin-top: 40px;
+        }
+    
+        &-item:nth-child(2){
+            display: none;
+        }  
+    }
+
+    .main-partrens__item-box {
+        width: 40%;
+        margin-bottom: 26px;
+    }
+
+    .main-partrens__item-box--text{
+        width: 100%;
+    }
+
+    .main-partrens__item-box:nth-child(odd){
+        margin-right: 2px;
+    }
+
+    .grid{
+        grid-template: repeat(9, 200px)/ 300px;
+
+        &__item{
+            &-text {
+               font-size: 16px;
+            }
+
+            &-bg {
+                top: 15%;
+                left: 45%;
+            }
+        }
+
+        &__item:nth-child(8), &__item--btn-block, &__item--title{
+            grid-column: 1;
+        }
+
+        &__item--title{
+            align-items: flex-end;
+        }
+    }
 }
 
 @media screen and (max-width: 300px) {
+
+    h2{
+        font-size: 44px;
+    }
+
     .container {
         width: 270px;
         padding: 0 5px;
@@ -1070,5 +1220,29 @@ h6{
 
     body{
         font-size: 14px;
+    }
+
+    .form-application {
+    
+        &__item {
+            width: 230px;   
+        }
+
+        .main-teacher__item--images {
+            margin-top: 20px;
+        }
+    }
+
+    .main-teacher{
+        width: 240px;
+        padding: 10px;
+    }
+
+    .grid {
+        grid-template: repeat(9, 200px)/200px;
+    }
+
+    .main-top__item--bg h2 {
+        text-align: left;
     }
 }
