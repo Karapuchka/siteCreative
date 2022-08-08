@@ -310,7 +310,7 @@
                 <div class="main-partrens container">
                     <h4 class="text-uppercase text-bold">СМИ партнеры</h4>
                     <h5 class="main-partrens__title text-bold">Ведущие каналы</h5>
-                    <div class="main-partrens__item flex-row">
+                    <div class="main-partrens__item flex-row jsMainPArtrensItem">
                         <div class="main-partrens__item-text">
                             <p class="main-partrens__item-text-i">Ход программы будет постоянно транслироваться в 5 каналах-партнерах. В течение 28 дней в этих каналах будет опубликовано более 60 постов о создании проекта для вашей компании.</p>
                         </div>
@@ -342,7 +342,7 @@
                         </div>
                     </div>
                     <h5 class="main-partrens__title text-bold">Рекламные каналы</h5>
-                    <div class="main-partrens__item flex-row">
+                    <div class="main-partrens__item flex-row jsMainPArtrensItem">
                         <div class="main-partrens__item-text">
                             <p class="main-partrens__item-text-i">До старта, в течении и  завершения программы будет опубликовано по 1 посту в каждом из рекламных каналов.</p>
                         </div>
@@ -471,12 +471,12 @@
                         <p>Политика конфеденциальности</p>
                     </div>
                 </div>
-                <form class="footer-item flex-cl form-application" method="post" id="form-application">
-                    <input type="text" class="form-application__item form-application__item--company" placeholder="Наименование компании">
-                    <input type="text" class="form-application__item" placeholder="ФИО">
-                    <input type="text" class="form-application__item" placeholder="Телефон">
-                    <input type="text" class="form-application__item" placeholder="Email">
-                    <button class="btn text-uppercase text-bold" id="btn-application">
+                <form name="applicationForm" class="footer-item flex-cl form-application" method="post" id="form-application">
+                    <input type="text" name="nameCompany" id="form-application__name-company" class="form-application__item form-application__item--company" placeholder="Наименование компании">
+                    <input type="text" name="nameUser" id="form-application__name-user" class="form-application__item" placeholder="ФИО">
+                    <input type="text" name="phoneUser" id="form-application__phone-user" class="form-application__item" placeholder="Телефон">
+                    <input type="text" name="emailUser" id="form-application__email-user" class="form-application__item" placeholder="Email">
+                    <button name="btnApplication" class="btn text-uppercase text-bold" id="btn-application">
                         <span class="btn-text">Подать заявку</span>
                     </button>
                 </form>
@@ -488,6 +488,28 @@
                     </div>
                 </div>
             </div>
+
+            <div class="modal-application modal-application-info flex-cl">
+                <div class="modal-application__content flex-row">
+                     <svg class="modal-application__icon" width="77" height="77" viewBox="0 0 77 77" fill="none" xmlns="http://www.w3.org/2000/svg">
+                         <circle cx="38.5" cy="38.5" r="38" fill="white" stroke="#0B3FC9"/>
+                         <ellipse cx="38.5" cy="31" rx="5.5" ry="17" fill="#0B3FC9"/>
+                         <circle cx="38.5" cy="58.5" r="5.5" fill="#0B3FC9"/>
+                     </svg>                
+                     <p class="modal-application__text text-uppercase text-bold">Заявка отправлена!</p>
+                </div>
+             </div>
+
+             <div class="modal-application modal-application-error flex-cl">
+                <div class="modal-application__content flex-row">
+                    <svg class="modal-application__icon" width="109" height="110" viewBox="0 0 109 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8.98055 82L59.5 0.945276L110.019 82H8.98055Z" fill="#FF0000" stroke="black"/>
+                        <ellipse cx="58.55" cy="41.95" rx="4.675" ry="14.45" fill="black"/>
+                        <circle cx="58.55" cy="65.325" r="4.675" fill="black"/>
+                    </svg>                                                            
+                     <p class="modal-application__text text-uppercase text-bold">Ошибка в написании!</p>
+                </div>
+             </div>
         </footer>
     </div>
     
