@@ -181,6 +181,7 @@ h6{
 .wrapper{
     min-height: 100%;
     min-width: 100%;
+    position: relative;
 }
 
 
@@ -639,6 +640,8 @@ h6{
     color: #fff;
     padding: 100px 0;
     background: radial-gradient(at 0% 100%, #41024d 10%, #010F29 70%);
+    position: relative;
+    overflow: hidden;
 
     &-content{
         flex-wrap: wrap;
@@ -678,6 +681,11 @@ h6{
         border-radius: 5px; 
         color: #fff;     
     }
+
+    &__item:focus{
+        box-shadow: 0 0 10px blue;
+    }
+
     &__item--company {
         border: 1px solid #EFC247;
         background: transparent;
@@ -685,6 +693,33 @@ h6{
 
     .btn-text{
         font-size: 18px;
+    }
+}
+
+.modal-application{
+    user-select: none;
+    padding: 15px 10px;
+    width: 250px;
+    justify-content: space-between;
+    align-items: flex-start;
+    border: 1px solid gray;
+    position: absolute;
+    top: 100%;
+    left: 80%;
+
+    &__content  {
+        align-items: center;
+    }
+
+    &__text{
+        margin-left: 20px;
+        flex: 1 1 auto;
+        font-size: 12px;
+    }
+
+    &__icon{
+        width: 30px;
+        height: 30px;
     }
 }
 
@@ -1244,5 +1279,25 @@ h6{
 
     .main-top__item--bg h2 {
         text-align: left;
+    }
+
+    .modal-application{
+        top: 0;
+        left: 100%;
+    
+        &__content  {
+            align-items: center;
+        }
+    
+        &__text{
+            margin-left: 20px;
+            flex: 1 1 auto;
+            font-size: 12px;
+        }
+    
+        &__icon{
+            width: 30px;
+            height: 30px;
+        }
     }
 }
