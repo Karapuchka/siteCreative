@@ -461,10 +461,10 @@
         <footer class="footer">
             <div class="footer-content container flex-row">
                 <div class="footer-item footer-item--justify-start">
-                    <h4 class="text-bold text-uppercase">Бросить вызов</h4>
+                    <h4 class="text-bold text-uppercase jsFooterTitle">Бросить вызов</h4>
                 </div>
                 <div class="footer-item flex-cl">
-                    <h4 class="text-bold text-uppercase">Бросить вызов</h4>
+                    <h4 class="text-bold text-uppercase jsFooterTitle">Бросить вызов</h4>
                     <div class="footer-item__text">
                         <p>ООО “САФФАРИ МЕДИА”</p>
                         <p>Все права защищены</p>
@@ -472,10 +472,10 @@
                     </div>
                 </div>
                 <form name="applicationForm" class="footer-item flex-cl form-application" method="post" id="form-application">
-                    <input type="text" name="nameCompany" id="form-application__name-company" class="form-application__item form-application__item--company" placeholder="Наименование компании">
-                    <input type="text" name="nameUser" id="form-application__name-user" class="form-application__item" placeholder="ФИО">
-                    <input type="text" name="phoneUser" id="form-application__phone-user" class="form-application__item" placeholder="Телефон">
-                    <input type="text" name="emailUser" id="form-application__email-user" class="form-application__item" placeholder="Email">
+                    <input id="applicationInputNameCompany" type="text" name="nameCompany" id="form-application__name-company" class="form-application__item form-application__item--company" placeholder="Наименование компании">
+                    <input id="applicationInputNameUser" type="text" name="nameUser" id="form-application__name-user" class="form-application__item" placeholder="ФИО">
+                    <input id="applicationInputPhoneUser" type="text" name="phoneUser" id="form-application__phone-user" class="form-application__item" placeholder="Телефон">
+                    <input id="applicationInputEmailUser" type="text" name="emailUser" id="form-application__email-user" class="form-application__item" placeholder="Email">
                     <button name="btnApplication" class="btn text-uppercase text-bold" id="btn-application">
                         <span class="btn-text">Подать заявку</span>
                     </button>
@@ -488,28 +488,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="modal-application modal-application-info flex-cl">
-                <div class="modal-application__content flex-row">
-                     <svg class="modal-application__icon" width="77" height="77" viewBox="0 0 77 77" fill="none" xmlns="http://www.w3.org/2000/svg">
-                         <circle cx="38.5" cy="38.5" r="38" fill="white" stroke="#0B3FC9"/>
-                         <ellipse cx="38.5" cy="31" rx="5.5" ry="17" fill="#0B3FC9"/>
-                         <circle cx="38.5" cy="58.5" r="5.5" fill="#0B3FC9"/>
-                     </svg>                
-                     <p class="modal-application__text text-uppercase text-bold">Заявка отправлена!</p>
-                </div>
-             </div>
-
-             <div class="modal-application modal-application-error flex-cl">
-                <div class="modal-application__content flex-row">
-                    <svg class="modal-application__icon" width="109" height="110" viewBox="0 0 109 110" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8.98055 82L59.5 0.945276L110.019 82H8.98055Z" fill="#FF0000" stroke="black"/>
-                        <ellipse cx="58.55" cy="41.95" rx="4.675" ry="14.45" fill="black"/>
-                        <circle cx="58.55" cy="65.325" r="4.675" fill="black"/>
-                    </svg>                                                            
-                     <p class="modal-application__text text-uppercase text-bold">Ошибка в написании!</p>
-                </div>
-             </div>
         </footer>
     </div>
     
