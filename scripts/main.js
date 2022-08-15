@@ -105,41 +105,47 @@ wrapper.addEventListener('click', function(event){
 const modalApplicationInfo  = document.querySelector('.modal-application-info');
 const modalApplicationError = document.querySelector('.modal-application-error');
 
-const formApplication = document.forms.applicationForm;
+const formApplication= document.querySelector('.form-application');
 const arryFormApplicationTitle = document.querySelectorAll('.jsFooterTitle');
 
 
 let modalErrorText = document.querySelector('.modal-application-error .modal-application__text');
+const inputsApplication = document.querySelectorAll('.applicationForm input');
     
-let widthForm = formApplication.offsetHeigh;
-
-function formClear(formName, formTitile){
-    formName.innerHTML = 'Нам ушло уведомление! Как только мы его получим, сразу выйдем на связь для уточнения деталей.';
-
-    try {
-        formTitile.forEach(item =>{
-            item.innerText = 'Супер!';
-        });
-    } catch (error) {
-        formTitile.innerText = 'Супер!';
-    }
-}
-
 let inputErrors = {
-    mainError: function(nameInput){
+
+    validation: function(nameInput){
         if(   nameInput.value == ''   || nameInput.value == ' '
         || nameInput.value == null || nameInput.value == undefined
         ){
     
-            nameInput.style.boxShadow = '0 0 10px red';
+            return true;
+
         }
         else{
-            nameInput.style.boxShadow = 'none';
+            return false;
         }
     },
 
-    blueShadow: function(nameInput){
-        nameInput.style.boxShadow = '0 0 10px blue';
+    formClear: function(formName, formTitile){
+        formName.innerHTML = 'Нам ушло уведомление! Как только мы его получим, сразу выйдем на связь для уточнения деталей.';
+        formName.style.height = 412 + 'px';
+        formName.style.minWidth = 100 + '%';
+
+
+        console.log(formName.clientHeight);
+        try {
+            formTitile.forEach(item =>{
+                item.innerText = 'Супер!';
+            });
+        } catch (error) {
+            formTitile.innerText = 'Супер!';
+        }
+    },
+
+    redShadow: function(nameInput){
+
+        nameInput.style.boxShadow = '0 0 10px red';
     },
 
     noneShadow: function(nameInput){
@@ -147,78 +153,54 @@ let inputErrors = {
     },
 }
 
+
 formApplication.addEventListener('click', function(event){
-    
+
     if(event.target.closest('#btn-application')){
         event.preventDefault();
-            inputErrors.mainError(formApplication.elements.nameCompany);
-            inputErrors.mainError(formApplication.elements.nameUser);
-            inputErrors.mainError(formApplication.elements.emailUser);
-            inputErrors.mainError(formApplication.elements.phoneUser);
-    }
 
-    if(event.target.closest('#applicationInputNameCompany')){
+        if(inputErrors.validation(formApplication.elements.nameCompany)){
 
-        inputErrors.noneShadow(formApplication.elements.nameCompany);
-    }
+            inputErrors.redShadow(formApplication.elements.nameCompany);
+        }
+        else{
 
-    if(event.target.closest('#applicationInputNameUser')){
+            inputErrors.noneShadow(formApplication.elements.nameCompany);
+            
+        }
 
-        inputErrors.noneShadow(formApplication.elements.nameUser)
-    }
+        if(inputErrors.validation(formApplication.elements.nameUser)){
 
-    if(event.target.closest('#applicationInputPhoneUser')){
+            inputErrors.redShadow(formApplication.elements.nameUser);
+        }
+        else{
 
-        inputErrors.noneShadow(formApplication.elements.phoneUser)
-    }
+            inputErrors.noneShadow(formApplication.elements.nameUser);
+        }
 
-    if(event.target.closest('#applicationInputEmailUser')){
-       
-        inputErrors.noneShadow(formApplication.elements.emailUser)
-    }
-});
+        if(inputErrors.validation(formApplication.elements.phoneUser)){
 
-formApplication.addEventListener('focus', function(event){
+            inputErrors.redShadow(formApplication.elements.phoneUser);
+        }
+        else{
 
-    if(event.target.closest('#applicationInputNameCompany')){
+            inputErrors.noneShadow(formApplication.elements.phoneUser);
+        }
 
-        inputErrors.blueShadow(formApplication.elements.nameCompany);
-    }
+        if(inputErrors.validation(formApplication.elements.emailUser)){
+            
+            inputErrors.redShadow(formApplication.elements.emailUser);
+        }
+        else{
 
-    if(event.target.closest('#applicationInputNameUser')){
+            inputErrors.noneShadow(formApplication.elements.emailUser);
+     
+        }
 
-        inputErrors.blueShadow(formApplication.elements.nameUser)
-    }
+        if(!inputErrors.validation(formApplication.elements.nameCompany) && !inputErrors.validation(formApplication.elements.nameUser) &&
+           !inputErrors.validation(formApplication.elements.phoneUser)   && !inputErrors.validation(formApplication.elements.emailUser)){
 
-    if(event.target.closest('#applicationInputPhoneUser')){
-
-        inputErrors.blueShadow(formApplication.elements.phoneUser)
-    }
-
-    if(event.target.closest('#applicationInputEmailUser')){
-       
-        inputErrors.blueShadow(formApplication.elements.emailUser)
-    }
-});
-
-formApplication.addEventListener('blur', function(event){
-    if(event.target.closest('#applicationInputNameCompany')){
-
-        inputErrors.noneShadow(formApplication.elements.nameCompany);
-    }
-
-    if(event.target.closest('#applicationInputNameUser')){
-
-        inputErrors.noneShadow(formApplication.elements.nameUser)
-    }
-
-    if(event.target.closest('#applicationInputPhoneUser')){
-
-        inputErrors.noneShadow(formApplication.elements.phoneUser)
-    }
-
-    if(event.target.closest('#applicationInputEmailUser')){
-       
-        inputErrors.noneShadow(formApplication.elements.emailUser)
+            inputErrors.formClear(formApplication, arryFormApplicationTitle)
+        }
     }
 });
