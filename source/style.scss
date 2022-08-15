@@ -682,44 +682,17 @@ h6{
         color: #fff;     
     }
 
-    &__item:focus{
-        box-shadow: 0 0 10px blue;
-    }
-
     &__item--company {
         border: 1px solid #EFC247;
         background: transparent;
     }
 
+    input{
+        -webkit-appearance: none;
+    }
+
     .btn-text{
         font-size: 18px;
-    }
-}
-
-.modal-application{
-    user-select: none;
-    padding: 15px 10px;
-    width: 250px;
-    justify-content: space-between;
-    align-items: flex-start;
-    border: 1px solid gray;
-    position: absolute;
-    top: 100%;
-    left: 80%;
-
-    &__content  {
-        align-items: center;
-    }
-
-    &__text{
-        margin-left: 20px;
-        flex: 1 1 auto;
-        font-size: 12px;
-    }
-
-    &__icon{
-        width: 30px;
-        height: 30px;
     }
 }
 
@@ -1106,6 +1079,11 @@ h6{
             font-size: 18px;
         }
     }
+
+   /*      .modal-application{
+        top: 0;
+        left: 100%;
+    } */
 }
 
 @media screen and (max-width: 400px) {
@@ -1279,25 +1257,5 @@ h6{
 
     .main-top__item--bg h2 {
         text-align: left;
-    }
-
-    .modal-application{
-        top: 0;
-        left: 100%;
-    
-        &__content  {
-            align-items: center;
-        }
-    
-        &__text{
-            margin-left: 20px;
-            flex: 1 1 auto;
-            font-size: 12px;
-        }
-    
-        &__icon{
-            width: 30px;
-            height: 30px;
-        }
     }
 }
