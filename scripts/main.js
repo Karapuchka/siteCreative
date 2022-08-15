@@ -131,6 +131,7 @@ let inputErrors = {
         formName.innerHTML = 'Нам ушло уведомление! Как только мы его получим, сразу выйдем на связь для уточнения деталей.';
         formName.style.height = 412 + 'px';
 
+
         console.log(formName.clientHeight);
         try {
             formTitile.forEach(item =>{
