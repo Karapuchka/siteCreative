@@ -892,56 +892,17 @@ h6 {
   color: #fff;
 }
 
-.form-application__item:focus {
-  -webkit-box-shadow: 0 0 10px blue;
-          box-shadow: 0 0 10px blue;
-}
-
 .form-application__item--company {
   border: 1px solid #EFC247;
   background: transparent;
 }
 
+.form-application input {
+  -webkit-appearance: none;
+}
+
 .form-application .btn-text {
   font-size: 18px;
-}
-
-.modal-application {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  padding: 15px 10px;
-  width: 250px;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  border: 1px solid gray;
-  position: absolute;
-  top: 100%;
-  left: 80%;
-}
-
-.modal-application__content {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.modal-application__text {
-  margin-left: 20px;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
-  font-size: 12px;
-}
-
-.modal-application__icon {
-  width: 30px;
-  height: 30px;
 }
 
 @media screen and (min-width: 1600px) {
@@ -1285,6 +1246,10 @@ h6 {
   .form-application .btn-text {
     font-size: 18px;
   }
+  /*      .modal-application{
+        top: 0;
+        left: 100%;
+    } */
 }
 
 @media screen and (max-width: 400px) {
@@ -1428,25 +1393,5 @@ h6 {
   }
   .main-top__item--bg h2 {
     text-align: left;
-  }
-  .modal-application {
-    top: 0;
-    left: 100%;
-  }
-  .modal-application__content {
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
-  .modal-application__text {
-    margin-left: 20px;
-    -webkit-box-flex: 1;
-        -ms-flex: 1 1 auto;
-            flex: 1 1 auto;
-    font-size: 12px;
-  }
-  .modal-application__icon {
-    width: 30px;
-    height: 30px;
   }
 }
