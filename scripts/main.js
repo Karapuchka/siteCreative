@@ -130,8 +130,6 @@ let inputErrors = {
     formClear: function(formName, formTitile){
         formName.innerHTML = 'Нам ушло уведомление! Как только мы его получим, сразу выйдем на связь для уточнения деталей.';
         formName.style.height = 412 + 'px';
-        formName.style.minWidth = 100 + '%';
-
 
         console.log(formName.clientHeight);
         try {
