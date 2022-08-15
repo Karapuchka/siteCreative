@@ -691,6 +691,10 @@ h6{
         -webkit-appearance: none;
     }
 
+    input:focus{
+        box-shadow: 0 0 10px blue;
+    }
+
     .btn-text{
         font-size: 18px;
     }
