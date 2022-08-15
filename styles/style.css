@@ -901,6 +901,11 @@ h6 {
   -webkit-appearance: none;
 }
 
+.form-application input:focus {
+  -webkit-box-shadow: 0 0 10px blue;
+          box-shadow: 0 0 10px blue;
+}
+
 .form-application .btn-text {
   font-size: 18px;
 }
