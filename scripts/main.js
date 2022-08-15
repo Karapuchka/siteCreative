@@ -1,13 +1,14 @@
+'use strict';
+
 gsap.registerPlugin(ScrollTrigger);
 
-const container          = document.querySelector('.container');
+const windowWidth        = document.documentElement.clientWidth;
 const mainGradientItem   = document.querySelector('.jsListCreativeIs');
 const mainContentImageBg = document.querySelector('.main-content--image-bg');
 const listCreativeIs     = document.querySelector('.jsListCreativeIs');
 const mainTopOffer       = document.querySelector('.jsMainTopOffer');
 const mainTopStairs      = document.querySelector('.jsMainTopStairs');
 const footer             = document.querySelector('.footer');
-
 const mainTopStairsTexts = document.querySelectorAll('.jsMainTopStairs .main-top__item-text');
 const mainPartrensItems  = document.querySelectorAll('.jsMainPArtrensItem');
 
@@ -37,7 +38,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
     mainContentImageBg.style.height = mainContentImageBg.offsetWidth * 75 / 100 + 'px'; 
 
-    if( container.offsetWidth <= 1000){
+    if( windowWidth <= 1000){
 
         listCreativeIs.classList.remove('flex-row');
         listCreativeIs.classList.add('flex-cl');
@@ -48,7 +49,7 @@ window.addEventListener('DOMContentLoaded', function(){
         listCreativeIs.classList.add('flex-row');
     }
 
-    if( container.offsetWidth <= 650){
+    if( windowWidth <= 650){
 
         mainTopOffer.classList.add('flex-wrap--reverse');
 
@@ -72,7 +73,7 @@ window.addEventListener('DOMContentLoaded', function(){
         mainTopOffer.classList.remove('flex-wrap--reverse');
     }
 
-    if( container.offsetWidth <= 300){
+    if( windowWidth <= 300){
 
         mainTopOffer.style.padding = '10px 5px';
     }
@@ -105,116 +106,119 @@ const modalApplicationInfo  = document.querySelector('.modal-application-info');
 const modalApplicationError = document.querySelector('.modal-application-error');
 
 const formApplication = document.forms.applicationForm;
+const arryFormApplicationTitle = document.querySelectorAll('.jsFooterTitle');
+
 
 let modalErrorText = document.querySelector('.modal-application-error .modal-application__text');
+    
+let widthForm = formApplication.offsetHeigh;
+
+function formClear(formName, formTitile){
+    formName.innerHTML = 'Нам ушло уведомление! Как только мы его получим, сразу выйдем на связь для уточнения деталей.';
+
+    try {
+        formTitile.forEach(item =>{
+            item.innerText = 'Супер!';
+        });
+    } catch (error) {
+        formTitile.innerText = 'Супер!';
+    }
+}
+
+let inputErrors = {
+    mainError: function(nameInput){
+        if(   nameInput.value == ''   || nameInput.value == ' '
+        || nameInput.value == null || nameInput.value == undefined
+        ){
+    
+            nameInput.style.boxShadow = '0 0 10px red';
+        }
+        else{
+            nameInput.style.boxShadow = 'none';
+        }
+    },
+
+    blueShadow: function(nameInput){
+        nameInput.style.boxShadow = '0 0 10px blue';
+    },
+
+    noneShadow: function(nameInput){
+        nameInput.style.boxShadow = '';
+    },
+}
 
 formApplication.addEventListener('click', function(event){
-
-    if(formApplication.elements.nameCompany){
-        formApplication.elements.nameCompany.style.boxShadow = 'none';
-    }
-
-    if(formApplication.elements.nameUser){
-        formApplication.elements.nameUser.style.boxShadow    = 'none';
-    }
-
-    if(formApplication.elements.phoneUser){
-        formApplication.elements.phoneUser.style.boxShadow   = 'none';
-    }
-
-    if(formApplication.elements.emailUser){
-        formApplication.elements.emailUser.style.boxShadow   = 'none';
-    }
     
-    if(formApplication.elements.btnApplication){
+    if(event.target.closest('#btn-application')){
         event.preventDefault();
+            inputErrors.mainError(formApplication.elements.nameCompany);
+            inputErrors.mainError(formApplication.elements.nameUser);
+            inputErrors.mainError(formApplication.elements.emailUser);
+            inputErrors.mainError(formApplication.elements.phoneUser);
+    }
 
-         //Проверка на ввод названи компании
-        if(   formApplication.elements.nameCompany.value == ''   || formApplication.elements.nameCompany.value == ' '
-           || formApplication.elements.nameCompany.value == null || formApplication.elements.nameCompany.value == undefined
-        ){
+    if(event.target.closest('#applicationInputNameCompany')){
 
-            modalErrorText.innerText = 'Введите название компании!';
+        inputErrors.noneShadow(formApplication.elements.nameCompany);
+    }
 
-            formApplication.elements.nameCompany.style.boxShadow = '0 0 10px red';
-            
-            gsap.to(modalApplicationError, {y: -80, duration: 1});
-            
-            gsap.to(modalApplicationError, {delay: 3, y: 80, duration: 2});
-        }
+    if(event.target.closest('#applicationInputNameUser')){
 
-        //Проверка на ввод имени
-        if(    formApplication.elements.nameUser.value == ''   || formApplication.elements.nameUser.value == ' '
-            || formApplication.elements.nameUser.value == null || formApplication.elements.nameUser.value == undefined
-        ){
+        inputErrors.noneShadow(formApplication.elements.nameUser)
+    }
 
-            modalErrorText.innerText = 'Введите ваше имя!';
+    if(event.target.closest('#applicationInputPhoneUser')){
 
-            formApplication.elements.nameUser.style.boxShadow = '0 0 10px red';
-            
-            gsap.to(modalApplicationError, {y: -80, duration: 1});
-            
-            gsap.to(modalApplicationError, {delay: 3, y: 80, duration: 2});
-        }
+        inputErrors.noneShadow(formApplication.elements.phoneUser)
+    }
 
-        //Проверка на ввод имени
-        if(   formApplication.elements.phoneUser.value == ''      || formApplication.elements.phoneUser.value == ' '
-           || formApplication.elements.phoneUser.value == null    || formApplication.elements.phoneUser.value == undefined
-        ){
+    if(event.target.closest('#applicationInputEmailUser')){
+       
+        inputErrors.noneShadow(formApplication.elements.emailUser)
+    }
+});
 
-            modalErrorText.innerText = 'Введите ваш номер телефона!';
+formApplication.addEventListener('focus', function(event){
 
-            formApplication.elements.phoneUser.style.boxShadow = '0 0 10px red';
-            
-            gsap.to(modalApplicationError, {y: -80, duration: 1});
-            
-            gsap.to(modalApplicationError, {delay: 3, y: 80, duration: 2});
-        }
+    if(event.target.closest('#applicationInputNameCompany')){
 
+        inputErrors.blueShadow(formApplication.elements.nameCompany);
+    }
 
-        if(    formApplication.elements.emailUser.value == ''       || formApplication.elements.emailUser.value == ' '
-            || formApplication.elements.emailUser.value == null     || formApplication.elements.emailUser.value == undefined
-         ){
+    if(event.target.closest('#applicationInputNameUser')){
 
-            modalErrorText.innerText = 'Введите ваш адрес электронной почты!';
-            
-            formApplication.elements.emailUser.style.boxShadow = '0 0 10px red';
+        inputErrors.blueShadow(formApplication.elements.nameUser)
+    }
 
-            gsap.to(modalApplicationError, {y: -80, duration: 1});
-            
-            gsap.to(modalApplicationError, {delay: 3, y: 80, duration: 2});
-        }
+    if(event.target.closest('#applicationInputPhoneUser')){
 
-        //Проверка на пустые поля (все)
-        if((    formApplication.elements.nameCompany.value == ''    || formApplication.elements.nameCompany.value == ' '    || formApplication.elements.nameCompany.value == null    || formApplication.elements.nameCompany.value == undefined)
-            && (formApplication.elements.nameUser.value    == ''    || formApplication.elements.nameUser.value    == ' '    || formApplication.elements.nameUser.value    == null    || formApplication.elements.nameUser.value    == undefined)
-            && (formApplication.elements.phoneUser.value   == ''    || formApplication.elements.phoneUser.value   == ' '    || formApplication.elements.phoneUser.value   == null    || formApplication.elements.phoneUser.value   == undefined)
-            && (formApplication.elements.emailUser.value   == ''    || formApplication.elements.emailUser.value   == ' '    || formApplication.elements.emailUser.value   == null    || formApplication.elements.emailUser.value   == undefined))
-        { 
-            modalErrorText.innerText = 'Введите данные!';
+        inputErrors.blueShadow(formApplication.elements.phoneUser)
+    }
 
-            formApplication.elements.nameCompany.style.boxShadow = '0 0 10px red';
-            formApplication.elements.nameUser.style.boxShadow    = '0 0 10px red';
-            formApplication.elements.phoneUser.style.boxShadow   = '0 0 10px red';
-            formApplication.elements.emailUser.style.boxShadow   = '0 0 10px red';
-        
-            gsap.to(modalApplicationError, {y: -80, duration: 1});
-            
-            gsap.to(modalApplicationError, {delay: 3, y: 80, duration: 2});
-        }
+    if(event.target.closest('#applicationInputEmailUser')){
+       
+        inputErrors.blueShadow(formApplication.elements.emailUser)
+    }
+});
 
-        if(    !formApplication.elements.nameCompany.value == ''    && !formApplication.elements.nameCompany.value == ' '    && !formApplication.elements.nameCompany.value == null    && !formApplication.elements.nameCompany.value == undefined
-            && !formApplication.elements.nameUser.value    == ''    && !formApplication.elements.nameUser.value    == ' '    && !formApplication.elements.nameUser.value    == null    && !formApplication.elements.nameUser.value    == undefined
-            && !formApplication.elements.phoneUser.value   == ''    && !formApplication.elements.phoneUser.value   == ' '    && !formApplication.elements.phoneUser.value   == null    && !formApplication.elements.phoneUser.value   == undefined
-            && !formApplication.elements.emailUser.value   == ''    && !formApplication.elements.emailUser.value   == ' '    && !formApplication.elements.emailUser.value   == null    && !formApplication.elements.emailUser.value   == undefined)
-        { 
-        
-            gsap.to(modalApplicationInfo, {y: -80, duration: 1});
-            
-            gsap.to(modalApplicationInfo, {delay: 3, y: 80, duration: 2});
-        }
-        /* 
-        Добавить проверку на ввод номера телефона и email
-        */
+formApplication.addEventListener('blur', function(event){
+    if(event.target.closest('#applicationInputNameCompany')){
+
+        inputErrors.noneShadow(formApplication.elements.nameCompany);
+    }
+
+    if(event.target.closest('#applicationInputNameUser')){
+
+        inputErrors.noneShadow(formApplication.elements.nameUser)
+    }
+
+    if(event.target.closest('#applicationInputPhoneUser')){
+
+        inputErrors.noneShadow(formApplication.elements.phoneUser)
+    }
+
+    if(event.target.closest('#applicationInputEmailUser')){
+       
+        inputErrors.noneShadow(formApplication.elements.emailUser)
     }
 });
