@@ -2,6 +2,4 @@
 
 gsap.registerPlugin(ScrollTrigger);
 
-let detect = new MobileDetect(wwindow.navigator.userAgent);
-
-console.log('Hello');
+let detect = new MobileDetect(window.navigator.userAgent);

@@ -35,7 +35,9 @@ function cleanDist(){
 function watching(){
     watch(['source/styles/scss/style.scss'], styles)
     watch(['source/scripts/**/*'], scripts)
-    watch(['source/index.html']).on('change', browserSync.reload)
+    watch(['source/fonts/**/*'], fonts)
+    watch(['source/images/**/*'], images)
+    watch(['source/index.html'], html).on('change', browserSync.reload)
 }
 
 function styles(){
@@ -52,7 +54,9 @@ function styles(){
 
 function scripts(){
     return src([               
-            'source/scripts/main.js',  
+            'source/scripts/main.js',
+            'source/scripts/animationBtn.js',
+            'source/scripts/scrollTrigger.js',  
         ])
         .pipe(concat('main.min.js'))
         .pipe(uglify())
