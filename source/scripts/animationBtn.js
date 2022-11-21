@@ -1,5 +1,6 @@
-const btnMenu    = document.querySelectorAll('.menu__list__item');
-const btn        = document.querySelectorAll('.btn');
+const arrowIcon = document.querySelectorAll('.main__arrow__icon');
+const btnMenu   = document.querySelectorAll('.menu__list__item');
+const btn       = document.querySelectorAll('.btn');
 
 // Анимация для кнопок, если сайт открыт на ПК
 if(detect.mobile() == null){
@@ -38,10 +39,29 @@ if(detect.mobile() == null){
         }
 
         item.onpointerout = ()=>{
-            
             gsap.to(line, {
                 scaleX: 0,
                 transformOrigin: 'left',
+            })
+        }
+    })
+
+    //Анимация для кнопок-стрелок
+    arrowIcon.forEach(item =>{
+
+        item.onpointerover = ()=>{
+            gsap.to(item, {
+                duration: .7,
+                background: 'linear-gradient(138.91deg, #020f77 23.29%, #670f6f 88.99%)',
+                ease: 'power2.out(1)',
+            })
+        }
+
+        item.onpointerout = ()=>{
+            gsap.to(item, {
+                duration: .7,
+                background: 'linear-gradient(138.91deg, #670f6f 23.29%, #020f77 88.99%)',
+                ease: 'power2.out(1)',
             })
         }
     })
@@ -82,6 +102,23 @@ else{
                 gsap.to(event.target.closest('.menu__list__item__link'),{
                     duration: .7,
                     color: '#fff',
+                    ease: 'power2.out(1)',
+                })
+            }, 1200);
+        }
+
+        //Анимация для кнопок меню
+        if(event.target.closest('.main__arrow__icon')){
+            gsap.to(event.target.closest('.main__arrow__icon'), {
+                duration: .7,
+                background: 'linear-gradient(138.91deg, #670f6f 23.29%, #020f77 88.99%)',
+                ease: 'power2.out(1)',
+            })
+
+            setTimeout(()=>{
+                gsap.to(event.target.closest('.main__arrow__icon'), {
+                    duration: .7,
+                    background: 'linear-gradient(138.91deg, #670f6f 23.29%, #020f77 88.99%)',
                     ease: 'power2.out(1)',
                 })
             }, 1200);
