@@ -57,6 +57,7 @@ function scripts(){
             'source/scripts/main.js',
             'source/scripts/animationBtn.js',
             'source/scripts/scrollTrigger.js',  
+            'source/scripts/validForm.js',  
         ])
         .pipe(concat('main.min.js'))
         .pipe(uglify())
